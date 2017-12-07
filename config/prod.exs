@@ -61,4 +61,15 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs"
+
+config :nanoapp, NanoappWeb.Endpoint,
+  secret_key_base: "v1OTCZL9ohMbBlzvTD55zColHcPg2KQmkRgbRXWpPRyJZuFk+6uKGJGBLCu4A8Vx"
+
+# Configure your database
+config :nanoapp, Nanoapp.Repo,
+  adapter: Ecto.Adapters.Postgres,  username: System.get_env("DATA_DB_USER"),
+  password: System.get_env("DATA_DB_PASS"),
+  hostname: System.get_env("DATA_DB_HOST"),
+  database: "gonano",
+  pool_size: 15
